@@ -1,0 +1,6 @@
+public
+resources/_gen
+.aws-sam
+.hugo_build.lock
+packaged.yaml
+samconfig.toml

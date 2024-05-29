@@ -1,0 +1,4 @@
+baseURL = 'https://www.andycaine.com/'
+languageCode = 'en-gb'
+title = 'Bytes & Ladders'
+theme = 'ananke'

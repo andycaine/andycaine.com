@@ -1,0 +1,60 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: The andycaine.com site.
+
+Metadata:
+  AWS::ServerlessRepo::Application:
+    Name: andycaine-site
+    Description: The andycaine.com site.
+    Author: Andy Caine
+    SemanticVersion: 0.4.6
+
+Parameters:
+  DomainName:
+    Type: String
+    Description: The domain name of the site
+    Default: "www.andycaine.com"
+  HostedZoneId:
+    Type: String
+    Description: HostedZoneId for the Domain
+    Default: "Z0856312YT1R1VP2JH3O"
+  WebCertificateArn:
+    Type: String
+    Description: The ARN of the Web Certificate
+    Default: "arn:aws:acm:us-east-1:891377179718:certificate/4c475a2c-294b-43a5-96e7-2be4540e2945"
+
+
+Resources:
+  StaticSite:
+    Type: AWS::Serverless::Application
+    Properties:
+      Location:
+        ApplicationId: 'arn:aws:serverlessrepo:eu-west-2:211125310871:applications/static-site'
+        SemanticVersion: 0.4.7
+      Parameters:
+        StaticAssetsLayerArn: !Ref StaticAssetsLayer
+        CacheControl: 'max-age=86400'
+        ContentSecurityPolicy: "default-src 'none'; img-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; object-src 'none'; frame-ancestors 'none'"
+        HostedZoneId: !Ref HostedZoneId
+        DomainName: !Ref DomainName
+        WebCertificateArn: !Ref WebCertificateArn
+
+  StaticAssetsLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: site-assets
+      Description: site assets layer.
+      ContentUri: ./public
+      CompatibleRuntimes:
+        - python3.12
+      CompatibleArchitectures:
+        - arm64
+      RetentionPolicy: Delete
+    Metadata:
+      BuildMethod: python3.12
+      BuildArchitecture: arm64
+
+Outputs:
+  URL:
+    Description: "Site URL"
+    Value: !GetAtt StaticSite.Outputs.URL
