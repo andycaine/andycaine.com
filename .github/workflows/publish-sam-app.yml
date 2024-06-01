@@ -11,6 +11,8 @@ permissions:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.126.2
     steps:
     - name: Install Hugo CLI
       run: |
