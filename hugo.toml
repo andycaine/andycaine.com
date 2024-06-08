@@ -2,3 +2,8 @@ baseURL = 'https://www.andycaine.com/'
 languageCode = 'en-gb'
 title = 'Bytes & Ladders'
 theme = 'ananke'
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
