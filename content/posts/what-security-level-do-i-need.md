@@ -2,7 +2,7 @@
 title = 'What Security Level Do I Need?'
 date = 2024-06-08T09:30:29+01:00
 categories = ['Software Development']
-tags = ['Cryptography', 'Encryption' 'Software Development', 'Secure Coding']
+tags = ['Cryptography', 'Encryption', 'Software Development', 'Secure Coding']
 +++
 
 This system provides 128-bit security level.
