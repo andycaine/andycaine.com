@@ -13,7 +13,7 @@ Parameters:
   DomainName:
     Type: String
     Description: The domain name of the site
-    Default: "www.andycaine.com"
+    Default: "andycaine.com"
   HostedZoneId:
     Type: String
     Description: HostedZoneId for the Domain
@@ -21,7 +21,7 @@ Parameters:
   WebCertificateArn:
     Type: String
     Description: The ARN of the Web Certificate
-    Default: "arn:aws:acm:us-east-1:891377179718:certificate/4c475a2c-294b-43a5-96e7-2be4540e2945"
+    Default: "arn:aws:acm:us-east-1:891377179718:certificate/b95987bd-ddb3-4c48-9807-927ce1ff988e"
 
 
 Resources:
