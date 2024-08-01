@@ -7,7 +7,7 @@ Metadata:
     Name: andycaine-site
     Description: The andycaine.com site.
     Author: Andy Caine
-    SemanticVersion: 0.5.1
+    SemanticVersion: 0.5.2
 
 Parameters:
   DomainName:
