@@ -7,10 +7,16 @@ clean:
 	rm -f packaged.yaml
 
 public:
-	HUGO_ENV=production hugo --gc --minify
+	docker run -it \
+		-v ${PWD}:/src \
+		-e HUGO_ENV=production \
+		-p8080:8080 hugomods/hugo:0.135.0 --gc --minify
 
 dev:
-	hugo server
+	docker run -it \
+		-v ${PWD}:/src \
+		-v ${PWD}/hugo_cache:/tmp/hugo_cache \
+		-p8080:8080 hugomods/hugo:0.135.0 server -p 8080
 
 .aws-sam/build: public template.yaml
 	sam build
