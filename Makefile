@@ -10,7 +10,7 @@ public:
 	docker run -it \
 		-v ${PWD}:/src \
 		-e HUGO_ENV=production \
-		-p8080:8080 hugomods/hugo:0.135.0 --gc --minify
+		-p8080:8080 hugomods/hugo:0.135.0 hugo --gc --minify
 
 dev:
 	docker run -it \
