@@ -1,5 +1,5 @@
-AWSTemplateFormatVersion: '2010-09-09'
-Transform: 'AWS::Serverless-2016-10-31'
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: "AWS::Serverless-2016-10-31"
 Description: The andycaine.com site.
 
 Metadata:
@@ -7,7 +7,7 @@ Metadata:
     Name: andycaine-site
     Description: The andycaine.com site.
     Author: Andy Caine
-    SemanticVersion: 0.7.0
+    SemanticVersion: 0.8.0
 
 Parameters:
   DomainName:
@@ -23,17 +23,16 @@ Parameters:
     Description: The ARN of the Web Certificate
     Default: "arn:aws:acm:us-east-1:891377179718:certificate/b95987bd-ddb3-4c48-9807-927ce1ff988e"
 
-
 Resources:
   StaticSite:
     Type: AWS::Serverless::Application
     Properties:
       Location:
-        ApplicationId: 'arn:aws:serverlessrepo:eu-west-2:211125310871:applications/static-site'
+        ApplicationId: "arn:aws:serverlessrepo:eu-west-2:211125310871:applications/static-site"
         SemanticVersion: 0.4.7
       Parameters:
         StaticAssetsLayerArn: !Ref StaticAssetsLayer
-        CacheControl: 'max-age=86400'
+        CacheControl: "max-age=86400"
         ContentSecurityPolicy: "default-src 'none'; img-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; object-src 'none'; frame-ancestors 'none'"
         HostedZoneId: !Ref HostedZoneId
         DomainName: !Ref DomainName
